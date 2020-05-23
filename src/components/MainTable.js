@@ -1,15 +1,18 @@
 import React from 'react';
+import TableHeader from './TableHeader'
+import TableBody from './TableBody'
 
 function MainTable(props) {
     
     return(
-        <ul>
-            {props.data.map(item => (
-                <li key={item.id}>
-                    {item.name}, {item.city}
-                </li>))}
-        </ul>
-    
+        <table>
+            <thead>
+                <TableHeader />
+            </thead>
+            <tbody>
+                <TableBody data={props.data}/>
+            </tbody>
+        </table>
     )
 }
 
