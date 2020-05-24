@@ -5,7 +5,7 @@ import TableBody from './TableBody'
 function MainTable(props) {
     
     return(
-        <table>
+        <table className="styled-table">
             <thead>
                 <TableHeader />
             </thead>

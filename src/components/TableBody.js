@@ -7,9 +7,9 @@ function TableBody(props) {
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.city}</td>
-            <td>Total income</td>
-            <td>Average income</td>
-            <td>Last month income</td>
+            <td>{item.totalIncome}</td>
+            <td>{item.averageIncome}</td>
+            <td>{item.lastMonthIncome}</td>
         </tr>
         ))
     )
