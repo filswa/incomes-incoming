@@ -9,14 +9,30 @@ class FilterableIncomeTable extends React.Component {
     constructor(){
         super();
         this.state = {
-            data: [],
-            isFetching: false,
+            data: null,
+            isFetching: true,
         }
+        this.onSort = this.onSort.bind(this);
     }
 
     componentDidMount(){
         this.fetchCompanyData();
     }
+
+    onSort(event, sortConfig){
+        const data = [...this.state.data];
+        data.sort((a,b) => {
+            if (a[sortConfig.key] < b[sortConfig.key]) {
+                return sortConfig.direction === 'ascending' ? -1 : 1;
+              }
+              if (a[sortConfig.key] > b[sortConfig.key]) {
+                return sortConfig.direction === 'ascending' ? 1 : -1;
+              }
+              return 0;
+            });
+
+        this.setState({data})
+      }
 
     fetchCompanyData = async () => {
         const fetchIncomeData = async (id) => {
@@ -38,6 +54,7 @@ class FilterableIncomeTable extends React.Component {
 
             const fullData = companiesData.map((item) => {
                 const incomeData = Incomes.processCompaniesIncomeData(item.incomes);
+                delete item.incomes;
                 return Object.assign({}, item, incomeData)
             })
 
@@ -51,8 +68,13 @@ class FilterableIncomeTable extends React.Component {
 
     render(){
         return(
-            <div>
-                { this.state.isFetching ? <h1>loading...</h1> : <MainTable data={this.state.data} />}                        
+            <div className="table-container">
+                { this.state.isFetching ? 
+                    <h1>loading...</h1> : 
+                    <MainTable 
+                        data={this.state.data}
+                        onSort={this.onSort}
+                    />}
             </div>
         )
     }
