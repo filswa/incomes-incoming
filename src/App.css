@@ -5,6 +5,21 @@
     padding: 20px;
 }
 
+.table-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.search-bar {
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
 .styled-table {
     border-collapse: collapse;
 }

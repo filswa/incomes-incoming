@@ -4,8 +4,8 @@ import TableBody from './TableBody'
 import useSortableData from './useSortableData'
 
 const MainTable = (props) => {
-
   const { items, requestSort, sortConfig } = useSortableData(props.data);
+  
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
       return;
