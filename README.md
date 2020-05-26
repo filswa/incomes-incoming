@@ -5,7 +5,8 @@ Incomes incoming is a simple web app created for displaying data about companies
 For the sake of clarity, the following sections of this documentation contain a brief commentary on the components used in the application
 
 ## Installing & running
-###Prerequisites
+
+### Prerequisites
 
 - git
 - node.js
@@ -28,31 +29,31 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The app was implemented following React "mixed" smart/dumb components design pattern. Mixed means, that some presentational components use useState hook to store local state
 
-###Components
+### Components
 
-**<FilterableIncomeTable/>**
+**\<FilterableIncomeTable/>**
 
 Main app component, responsible for fetching & partial processing of data, filtering logic and rendering sub-components
 
-**<Loader/>**
+**\<Loader/>**
 
 Responsible for spinning the circles on the loading screen :)
 
 Credit - [Tobias Ahlin](https://tobiasahlin.com/spinkit/)
 
-**<Searchbar/>**
+**\<Searchbar/>**
 
 Simple input component, used to collect input data from the user
 
-**<MainTable/>**
+**\<MainTable/>**
 
 Table container component, responsible for rendering the table and hooking in the sorting & pagination logic
 
-**<TableBody/>**
+**\<TableBody/>**
 
 Simple component, responsible for displaying table content from received props
 
-**<Pagination/>**
+**\<Pagination/>**
 
 Component responsible for calculating pages and displaying pagination section
 
