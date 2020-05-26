@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TableHeader from './TableHeader'
 import TableBody from './TableBody'
 import useSortableData from './useSortableData'
+import Pagination from './Pagination'
 
 const MainTable = (props) => {
   const { items, requestSort, sortConfig } = useSortableData(props.data);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage] = useState(30);
+
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const paginatedRows = items.slice(indexOfFirstRow, indexOfLastRow);
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
   
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
@@ -14,6 +24,7 @@ const MainTable = (props) => {
   };
 
     return(
+      <div>
         <table className="styled-table">
             <thead>
               <tr>
@@ -26,9 +37,16 @@ const MainTable = (props) => {
               </tr>
             </thead>
             <tbody>
-                <TableBody data={items}/>
+                <TableBody data={paginatedRows}/>
             </tbody>
         </table>
+        <Pagination
+          rowsPerPage={rowsPerPage}
+          totalRows={items.length}
+          currentPage={currentPage}
+          paginate={paginate}
+        />
+      </div>
     )
 }
 

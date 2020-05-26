@@ -15,7 +15,7 @@
     padding: 10px;
     margin-bottom: 20px;
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 3px;
     border: 1px solid #ddd;
     box-shadow: none;
 }
@@ -26,6 +26,7 @@
 
 thead tr th {
     cursor: pointer;
+    min-width: fit-content;
 }
 
 thead tr th.ascending::after {
@@ -41,11 +42,33 @@ thead tr th.descending::after {
 }
 
 .styled-table td, th {
-    border: 1px solid #999;
+    border: 1px solid #ddd;
     padding: 0.5rem;
     text-align: center;
 }
 
 .styled-table tr:nth-child(even) {
-    background-color: #eee;
+    background-color: #B0D0EA;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+  
+.pagination a {
+    color: black;
+    padding: 8px 16px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+  
+.pagination a.active {
+    background-color: #5A72A2;
+    color: white;
+}
+  
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
 }

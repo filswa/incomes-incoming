@@ -4,8 +4,6 @@ import MainTable from './MainTable'
 import Searchbar from './Searchbar'
 import * as Incomes from '../util/Income'
 
-const url = 'https://recruitment.hal.skygate.io/companies';
-
 class FilterableIncomeTable extends React.Component {
     constructor (){
         super();
@@ -30,7 +28,7 @@ class FilterableIncomeTable extends React.Component {
         
         this.setState({isFetching: true})
         try{
-            const result = await axios(url);
+            const result = await axios('https://recruitment.hal.skygate.io/companies');
 
             const incomeDataPromises = await result.data.map(async item => {
                 const incomeData =  await fetchIncomeData(item.id);
