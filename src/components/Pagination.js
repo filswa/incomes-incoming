@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Pagination = ({ rowsPerPage, totalRows, currentPage, paginate }) => {
   const pageNumbers = [];
@@ -8,17 +8,17 @@ const Pagination = ({ rowsPerPage, totalRows, currentPage, paginate }) => {
   }
 
   return (
-    <div className="pagination">      
-        {pageNumbers.map(number => (
-            <a
-              key={number}
-              href='#0'
-              className={ number === currentPage ? "active" : ""}
-              onClick={() => paginate(number)}
-             >
-              {number}
-            </a>
-        ))}
+    <div className="pagination">
+      {pageNumbers.map((number) => (
+        <a
+          key={number}
+          href="#0"
+          className={number === currentPage ? "active" : ""}
+          onClick={() => paginate(number)}
+        >
+          {number}
+        </a>
+      ))}
     </div>
   );
 };
