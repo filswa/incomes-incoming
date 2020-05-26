@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TableBody(props) {
+const TableBody = (props) => {
     return(
         props.data.map(item => (
         <tr key={item.id}>

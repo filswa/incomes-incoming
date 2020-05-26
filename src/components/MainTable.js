@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import TableHeader from './TableHeader'
 import TableBody from './TableBody'
 import useSortableData from './useSortableData'
 import Pagination from './Pagination'
@@ -24,7 +23,7 @@ const MainTable = (props) => {
   };
 
     return(
-      <div>
+      <React.Fragment>
         <table className="styled-table">
             <thead>
               <tr>
@@ -46,7 +45,7 @@ const MainTable = (props) => {
           currentPage={currentPage}
           paginate={paginate}
         />
-      </div>
+      </React.Fragment>
     )
 }
 

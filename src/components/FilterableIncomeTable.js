@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+
+import Loader from './Loader'
 import MainTable from './MainTable'
 import Searchbar from './Searchbar'
 import * as Incomes from '../util/Income'
@@ -73,14 +75,12 @@ class FilterableIncomeTable extends React.Component {
 
     render(){
         return(
-            <div>
-                { this.state.isFetching ? 
-                    <h1>loading...</h1> : 
-                    <div className="table-container">
+                this.state.isFetching ? 
+                    <Loader/> : 
+                    <React.Fragment>
                         <Searchbar handleInputChange={this.handleInputChange}></Searchbar>
                         <MainTable data={this.getFilteredData(this.state.searchValue)}/>
-                    </div>}
-            </div>
+                    </React.Fragment>
         )
     }
 }
