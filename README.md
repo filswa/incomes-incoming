@@ -1,68 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Incomes incoming!
 
-## Available Scripts
+Incomes incoming is a simple web app created for displaying data about companies and their incomes in a table format. It is built using React.js, HTML, CSS, axios library for fetching data, normalize.css for css normalization (duh) and prettier to make the code look pretty
 
-In the project directory, you can run:
+For the sake of clarity, the following sections of this documentation contain a brief commentary on the components used in the application
 
-### `npm start`
+## Installing & running
+###Prerequisites
 
-Runs the app in the development mode.<br />
+- git
+- node.js
+- browser (IE not supported:))
+
+### Download & install
+please execute the following steps:
+
+`git clone git@github.com:filswa/incomes-incoming.git`
+
+`cd incomes-incoming/`
+
+`npm install`
+
+`npm start`
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Design details
 
-### `npm test`
+The app was implemented following React "mixed" smart/dumb components design pattern. Mixed means, that some presentational components use useState hook to store local state
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###Components
 
-### `npm run build`
+**<FilterableIncomeTable/>**
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Main app component, responsible for fetching & partial processing of data, filtering logic and rendering sub-components
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+**<Loader/>**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Responsible for spinning the circles on the loading screen :)
 
-### `npm run eject`
+Credit - [Tobias Ahlin](https://tobiasahlin.com/spinkit/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**<Searchbar/>**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Simple input component, used to collect input data from the user
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**<MainTable/>**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Table container component, responsible for rendering the table and hooking in the sorting & pagination logic
 
-## Learn More
+**<TableBody/>**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Simple component, responsible for displaying table content from received props
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**<Pagination/>**
 
-### Code Splitting
+Component responsible for calculating pages and displaying pagination section
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+**useSortData**
 
-### Analyzing the Bundle Size
+useSortableData hook is responsible for providing sorting logic. it accepts the items, and an optional initial sort state. It returns an object with the sorted items, and a function to re-sort the items.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+**util/Income.js**
 
-### Making a Progressive Web App
+A module responsible for calculating income values. Used in combination with data fetch.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+**Responsivity**
 
-### Advanced Configuration
+The app was made responsive by using simple flexbox container with flex-direction: column. It should respond well with devices using width ~500px and above. Any widths below might require scrolling and/or zooming and should still be usable.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### Afterword
 
-### Deployment
+If you have any questions regarding the app, code, or design decisions, please feel free to contact me. I would also appreciate constructive feedback from you, as well as tips on what could be done different/better. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Many thanks!

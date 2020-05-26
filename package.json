@@ -1,5 +1,5 @@
 {
-  "name": "incoming",
+  "name": "incomes-incoming",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

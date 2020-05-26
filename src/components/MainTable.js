@@ -4,8 +4,17 @@ import useSortableData from "./useSortableData";
 import Pagination from "./Pagination";
 
 const MainTable = (props) => {
+  // Sorting hook
   const { items, requestSort, sortConfig } = useSortableData(props.data);
 
+  const getClassNamesFor = (name) => {
+    if (!sortConfig) {
+      return;
+    }
+    return sortConfig.key === name ? sortConfig.direction : undefined;
+  };
+
+  // Pagination logic
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage] = useState(30);
 
@@ -14,13 +23,6 @@ const MainTable = (props) => {
   const paginatedRows = items.slice(indexOfFirstRow, indexOfLastRow);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const getClassNamesFor = (name) => {
-    if (!sortConfig) {
-      return;
-    }
-    return sortConfig.key === name ? sortConfig.direction : undefined;
-  };
 
   return (
     <React.Fragment>
